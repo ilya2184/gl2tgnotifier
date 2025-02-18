@@ -21,10 +21,10 @@ def setup_routes(app):
 
     @app.route('/webhook/issues', methods=['POST'])
     def issues():
-        # Проверка заголовка X-Gitlab-Webhook-UUID
-        webhook_uuid = request.headers.get('X-Gitlab-Webhook-UUID')
+        # Проверка заголовка X-Gitlab-Token
+        webhook_uuid = request.headers.get('X-Gitlab-Token')
         if webhook_uuid not in config['webhook_uuids']:
-            return abort(401, webhook_uuid)  # Неавторизован
+            return abort(401)  # Неавторизован
 
         # Проверка заголовка X-Gitlab-Event
         gitlab_event = request.headers.get('X-Gitlab-Event')
