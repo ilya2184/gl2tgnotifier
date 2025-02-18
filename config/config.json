@@ -1,16 +1,9 @@
 {
-    "webhook_uuids": {
-        "00000000-0000-0000-0000-000000000000": {
+    "webhook_tokens": {
+        "X-Gitlab-Token Web-Hook 000000000000": {
             "type": "telegram",
             "token": "0000000000:00000000000000000000000000000000000",
             "group": "00000000000"
-        },
-        "00000000-0000-0000-0000-000000000001": {
-            "type": "email",
-            "smtp_server": "server",
-            "smtp_port": "port",
-            "username": "user_name",
-            "password": "password"
         }
     }
 }
