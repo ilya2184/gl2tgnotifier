@@ -44,7 +44,7 @@ def setup_routes(app):
         message = messagegen.prepare_message(action, data)
 
         # Отправка сообщения
-        messagesender.send_message(message, config, webhook_uuid)
+        send_result = messagesender.send_message(message, config, webhook_uuid)
 
-        return jsonify({"message": "Hook successful."})
+        return jsonify({"message": send_result})
 
