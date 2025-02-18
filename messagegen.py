@@ -40,13 +40,16 @@ def prepare_message(action, data):
     elif action == "reopen":
         action_text = f"Повторно открыта задача #{object_attributes['id']}."
         text = f"{description}\n{separator}\nОтветственный: {assignee_list}"
-    elif action == "update":
-        action_text = f"Обновлена задача #{object_attributes['id']}."
-        text = f"{description}\n{separator}\nОтветственный: {assignee_list}"
     else:
-        return {"subject": "Ошибка", "text": "Неизвестное действие с задачей"}
+        return {
+            "send": False,
+            "action": action,
+            "subject": "",
+            "text": ""
+        }
 
     return {
+        "send": True,
         "action": action_text,
         "subject": subject,
         "text": text

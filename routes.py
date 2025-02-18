@@ -42,7 +42,9 @@ def setup_routes(app):
         
         # Подготовка сообщения
         message = messagegen.prepare_message(action, data)
-
+        if message['send'] != True:
+            jsonify({"message": "not fo user"})
+        
         # Отправка сообщения
         send_result = messagesender.send_message(message, config, webhook_uuid)
 
