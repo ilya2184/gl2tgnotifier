@@ -13,14 +13,14 @@ ENV PYTHONUNBUFFERED=1
 COPY requirements.txt .
 RUN python -m pip install -r requirements.txt
 
-WORKDIR /app
-COPY . /app
+WORKDIR /config
+COPY . /config
 
-RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /app
+RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /config
 USER appuser
-RUN mkdir -p /app/models && chown -R appuser:appuser /app/models
+RUN mkdir -p /config && chown -R appuser:appuser /config
 
-VOLUME ["/app/config"]
+VOLUME ["/config"]
 
 # During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
 CMD ["gunicorn", "--bind", "0.0.0.0:5060", "main:app"]

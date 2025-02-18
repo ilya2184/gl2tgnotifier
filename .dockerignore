@@ -24,6 +24,6 @@
 **/obj
 **/secrets.dev.yaml
 **/values.dev.yaml
-**/models
+**/config
 LICENSE
 README.md
