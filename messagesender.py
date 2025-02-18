@@ -5,7 +5,7 @@ import smtplib
 from email.mime.text import MIMEText
 
 def send_message(message, config, webhook_uuid):
-    send_type = config['webhook_uuids'][webhook_uuid]['type']
+    send_type = config['webhook_tokens'][webhook_uuid]['type']
 
     if send_type == 'telegram':
         return send_telegram(message, config, webhook_uuid)
@@ -18,8 +18,8 @@ def send_message(message, config, webhook_uuid):
 
 def send_telegram(message, config, webhook_uuid):
     # Получение токена и группы из конфигурации
-    token = config['webhook_uuids'][webhook_uuid]['token']
-    group = config['webhook_uuids'][webhook_uuid]['group']
+    token = config['webhook_tokens'][webhook_uuid]['token']
+    group = config['webhook_tokens'][webhook_uuid]['group']
 
     # Логика отправки сообщения в Telegram
     text_message = (f"_{message['action']}_"
@@ -31,7 +31,7 @@ def send_telegram(message, config, webhook_uuid):
 
 def send_email(message, config, webhook_uuid):
     # Получение данных для отправки email из конфигурации
-    email_config = config['webhook_uuids'][webhook_uuid]
+    email_config = config['webhook_tokens'][webhook_uuid]
     recipient = email_config['recipient']
     subject = message['subject']  # Используем subject из структуры message
     smtp_server = email_config['smtp_server']
@@ -56,7 +56,7 @@ def send_email(message, config, webhook_uuid):
 
 def send_bitrix(message, config, webhook_uuid):
     # Логика отправки сообщения в Bitrix
-    bitrix_webhook = config['webhook_uuids'][webhook_uuid]['bitrix_webhook']
+    bitrix_webhook = config['webhook_tokens'][webhook_uuid]['bitrix_webhook']
     
     response = post(bitrix_webhook, json={"message": message['text']})  # Отправляем текст сообщения
     return response.json()

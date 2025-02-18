@@ -23,7 +23,7 @@ def setup_routes(app):
     def issues():
         # Проверка заголовка X-Gitlab-Token
         webhook_uuid = request.headers.get('X-Gitlab-Token')
-        if webhook_uuid not in config['webhook_uuids']:
+        if webhook_uuid not in config['webhook_tokens']:
             return abort(401)  # Неавторизован
 
         # Проверка заголовка X-Gitlab-Event
