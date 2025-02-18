@@ -32,13 +32,13 @@ def prepare_message(action, data):
     separator = "----------"  # Разделитель
 
     if action == "open":
-        action_text = f"Открыта задача #{object_attributes['id']}."
+        action_text = f"Открыта задача #{object_attributes['iid']}."
         text = f"{description}\n{separator}\nОтветственный: {assignee_list}"
     elif action == "close":
-        action_text = f"Закрыта задача #{object_attributes['id']}."
+        action_text = f"Закрыта задача #{object_attributes['iid']}."
         text = f"{description}\n{separator}\nОтветственный: {assignee_list}"
     elif action == "reopen":
-        action_text = f"Повторно открыта задача #{object_attributes['id']}."
+        action_text = f"Повторно открыта задача #{object_attributes['iid']}."
         text = f"{description}\n{separator}\nОтветственный: {assignee_list}"
     else:
         return {
