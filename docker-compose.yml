@@ -1,12 +1,12 @@
 version: '3.4'
 
 services:
-  textclassify:
-    image: textclassify
+  gl2tgnotifier:
+    image: gl2tgnotifier
     build:
       context: .
       dockerfile: ./Dockerfile
     ports:
       - 5060:5060
     volumes:
-      - ./models:/app/models      
+      - ./config:/app/config      
