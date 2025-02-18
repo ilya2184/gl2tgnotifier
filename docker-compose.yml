@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  textclassify:
+    image: textclassify
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 5060:5060
+    volumes:
+      - ./models:/app/models      
