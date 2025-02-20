@@ -22,11 +22,11 @@ def send_telegram(message, config, webhook_uuid):
     group = config['webhook_tokens'][webhook_uuid]['group']
 
     # Логика отправки сообщения в Telegram
-    text_message = (f"_{message['action']}_"
-        + f"\n*{message['subject']}*"
+    text_message = (f"{message['action']}"
+        + f"\n{message['subject']}"
         + f"\n{message['text']}")
     response = post(f"https://api.telegram.org/bot{token}/sendMessage", 
-                    data={"chat_id": group, "text": text_message, "parse_mode": "Markdown"})
+                    data={"chat_id": group, "text": text_message})
     return response.json()
 
 def send_email(message, config, webhook_uuid):
